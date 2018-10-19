@@ -1,5 +1,6 @@
 package com.example.fn;
 
+import com.fnproject.fn.api.FnConfiguration;
 import com.fnproject.fn.api.RuntimeContext;
 
 public class HelloFunction {
@@ -7,7 +8,8 @@ public class HelloFunction {
     private String message;
 
 
-    public HelloFunction(RuntimeContext ctx) {
+    @FnConfiguration
+    public void init(RuntimeContext ctx) {
         message = ctx.getConfigurationByKey("hello").orElse("Hello");
     }
 

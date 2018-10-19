@@ -6,6 +6,8 @@ build_image: fnproject/fn-java-fdk-build:jdk9-1.0.75
 run_image: fnproject/fn-java-fdk:jdk9-1.0.75
 cmd: com.example.fn.HelloFunction::handleRequest
 format: http-stream
+config:
+  hello: Aloha
 triggers:
 - name: function1-trigger
   type: http
