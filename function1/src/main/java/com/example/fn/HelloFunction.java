@@ -1,11 +1,14 @@
 package com.example.fn;
 
+import com.fnproject.fn.api.RuntimeContext;
+
 public class HelloFunction {
 
     private String message;
 
-    public HelloFunction() {
-        message = "Hello";
+
+    public HelloFunction(RuntimeContext ctx) {
+        message = ctx.getConfigurationByKey("hello").orElse("Hello");
     }
 
     public Message handleRequest(Message input) {
