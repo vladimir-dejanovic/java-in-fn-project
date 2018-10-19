@@ -9,7 +9,7 @@ public class HelloFunctionTest {
 
     @Rule
     public final FnTestingRule testing = FnTestingRule.createDefault();
-    
+
     @Test
     public void testWithBody() {
         testing.givenEvent().withBody("{\"message\":\"Developer\"}").enqueue();
