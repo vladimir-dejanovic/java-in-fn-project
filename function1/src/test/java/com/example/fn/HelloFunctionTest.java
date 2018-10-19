@@ -19,4 +19,12 @@ public class HelloFunctionTest {
         assertEquals("Hello, world!", result.getBodyAsString());
     }
 
+    @Test
+    public void testWithBody() {
+        testing.givenEvent().withBody("Developer").enqueue();
+        testing.thenRun(HelloFunction.class, "handleRequest");
+
+        FnResult result = testing.getOnlyResult();
+        assertEquals("Hello, Developer!", result.getBodyAsString());
+    }
 }
