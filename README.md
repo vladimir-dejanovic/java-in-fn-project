@@ -57,10 +57,35 @@ public class HelloFunction {
 }
 ```
 
+### Unit Testing in FN Project
+
+If you open src/test/java/com/example/fn/HelloFunctionTest.java, you will see how unit test is done in FN project
+
+```java
+public class HelloFunctionTest {
+
+    @Rule
+    public final FnTestingRule testing = FnTestingRule.createDefault();
+
+    @Test
+    public void shouldReturnGreeting() {
+        testing.givenEvent().enqueue();
+        testing.thenRun(HelloFunction.class, "handleRequest");
+
+        FnResult result = testing.getOnlyResult();
+        assertEquals("Hello, world!", result.getBodyAsString());
+    }
+
+}
+```
+
+If you are experienced with JUnit tests, this shouldn't need any explanations.
 
 Result is on branch **init-0.1**
 
-## Updated unit test
+## Updated unit test - branch init-0.2
+
+Let us add one more unit test, where we will pass
 
 
 
