@@ -12,7 +12,7 @@ $ fn version
   Server version:  0.3.595
 ```
 
-## Basic simple example of FN function in java language
+## Basic simple example of FN function in java language - branch init-0.1
 
 To create fn function in Java programing language type this
 
@@ -38,6 +38,13 @@ $ find .
 ./func.yaml
 ```
 
+If you check pom.xml you will see nothing special about it, it is plain pom.xml with some dependencies for fn-project, however this dependencies are needed only for testing purpose.
+If this dependencies are removed, everything will still work without any issues, only unit tests will fail.
+
+If you open src/main/java/com/example/fn/HelloFunction.java you will see that it is very simple class 
+```
+
+```
 
 
 Result is on branch **init-0.1**
