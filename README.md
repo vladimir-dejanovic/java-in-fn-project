@@ -43,7 +43,7 @@ If this dependencies are removed, everything will still work without any issues,
 
 If you open src/main/java/com/example/fn/HelloFunction.java you will see that it is very simple class 
 
-```java
+```
 package com.example.fn;
 
 public class HelloFunction {
@@ -145,7 +145,7 @@ $ fn invoke myapp1 function1
 
 If you open src/test/java/com/example/fn/HelloFunctionTest.java, you will see how unit test is done in FN project
 
-```java
+```
 public class HelloFunctionTest {
 
     @Rule
@@ -169,10 +169,26 @@ Result is on branch **init-0.1**
 
 ## Updated unit test - branch init-0.2
 
-Let us add one more unit test, where we will pass
+Let us add one more unit test, where we will pass argument Developer. 
 
+Code for unit test is very similar to init unit test and it goes like this
 
+```
+    @Test
+    public void testWithBody() {
+        testing.givenEvent().withBody("Developer").enqueue();
+        testing.thenRun(HelloFunction.class, "handleRequest");
 
+        FnResult result = testing.getOnlyResult();
+        assertEquals("Hello, Developer!", result.getBodyAsString());
+    }
+```
+
+Important part here is **withBody** which we use to pass parameter to our function. 
 
 Result is on branch **init-0.2**
 
+## JSON as input and output - branch init-0.3
+
+
+Result is on branch **init-0.3**
