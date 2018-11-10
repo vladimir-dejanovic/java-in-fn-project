@@ -190,5 +190,41 @@ Result is on branch **init-0.2**
 
 ## JSON as input and output - branch init-0.3
 
+Added class Message, which is simple class with single field message of type String.
+Lombok annotations are used to generate getter, setter and constructors.
+
+```
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Message {
+
+    private String message;
+}
+```
+
+This class will be used as input and output of function instead of String that was used in previous example. Modification to function is minimal.
+
+```
+    public Message handleRequest(Message input) {
+        String name = (input == null || input.getMessage().isEmpty()) ? "world"  : input.getMessage();
+
+        return new Message(message + ", " + name + "!");
+    }
+
+``` 
+
+After deploying function we can invoke it in this way
+
+```
+$ echo "{\"message\":\"It works\"}" | fn invoke --content-type "application/json" myapp1 function1
+
+```
+
+to invoke it via curl do this
+
+```
+$ curl -d '{"message":"Testing"}' http://localhost:8080/t/myapp1/function1-trigger
+```
 
 Result is on branch **init-0.3**
